@@ -1,36 +1,42 @@
 # Store API
 
 ## Description
-lorem lorem
+
+Project description 
 
 ## Getting Started
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+## Installation
 
-
-## Installation 
 Clone the repository.
+
 ```bash
-git clone git@github.com:iamclement1/clouder.git
-cd clouder
+git clone url
+cd into clone project
 ```
 
 Install dependencies.
+
 ```bash
 npm install
 ```
 
 Set up environment variables.
+
 ```bash
 NEXT_PUBLIC_BACKEND_URL='api url'
 ```
 
 Run the development server.
+
 ```bash
 npm start
 ```
 
 ## Packages Used
+
 - Node
 - Express
 - Body parser
@@ -38,6 +44,7 @@ npm start
 - Nodemon
 
 ## Contribution Guideline
+
 Contributions are welcome! Please follow these guidelines:
 
 -  Fork the repository.
@@ -47,5 +54,5 @@ Contributions are welcome! Please follow these guidelines:
 -  Submit a pull request.
 
 ## Contributing
-Contributors names.
 
+Contributors names

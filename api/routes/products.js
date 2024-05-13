@@ -6,12 +6,16 @@ const Product = require('../models/products');
 
 router.get('/', (req, res, next) => {
   Product.find()
+    .select('name price _id')
     .exec()
     .then((result) => {
-      console.log(result);
+      const response = {
+        count: result.length,
+        products: result
+      }
       res.status(200).json({
         message: 'Products fetched successfully',
-        result
+        response
       });
     })
     .catch((err) => {
@@ -30,10 +34,14 @@ router.post('/', (req, res, next) => {
   })
   product.save()
     .then((result) => {
-      console.log(result)
+      const createdProduct = {
+        name: result.name,
+        price: result.price,
+        _id: result._id
+      }
       res.status(201).json({
         message: 'Products created successfully',
-        createdProduct: result
+        createdProduct
       })
     })
     .catch((error) => {
@@ -47,11 +55,15 @@ router.post('/', (req, res, next) => {
 router.get('/:productId', (req, res, next) => {
   const id = req.params.productId;
   Product.findById(id)
+    .select('name price id')
     .exec()
-    .then((doc) => {
-      console.log(doc);
-      if (doc) {
-        res.status(200).json(doc);
+    .then((result) => {
+      console.log(result);
+      if (result) {
+        res.status(200).json({
+          message: 'Product with id ' + id + 'fetched successfully',
+          result: result
+        });
       } else {
         res.status(404).json({
           message: 'No valid data found for this product with id'

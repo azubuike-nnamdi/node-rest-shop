@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products')
 const orderRoutes = require('./api/routes/orders')
@@ -32,6 +33,12 @@ app.use((req, res, next) => {
 //Routes which should handle requests
 app.use('/products', productRoutes)
 app.use('/orders', orderRoutes)
+
+//connect to datbase server
+mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USERNAME + ':' + process.env.MONGO_ATLAS_PASSWORD + '@restshop.naloykx.mongodb.net/restshop');
+
+// mongoose.connect('mongodb+srv://restshop:' + process.env.MONGO_ATLAS_PASSWORD + '@restshop.naloykx.mongodb.net/restshop')
+
 
 //Handle request that gets here or routes that don't exist
 app.use((req, res, next) => {
